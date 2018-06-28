@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+		<script>
+			var scene = new THREE.Scene();                                                                     //scene is defined
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );   //camera is required that is used to see the object from different views
+
+			var renderer = new THREE.WebGLRenderer();                              //displays the scene
+			renderer.setSize( window.innerWidth, window.innerHeight );             //make render half of the size
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.BoxGeometry( 3, 2, 3 );                      //drawing cube
+			var material = new THREE.MeshBasicMaterial( { color: 0x4B0082 } );    //filling colors
+			var cube = new THREE.Mesh( geometry, material );                      //putting lines and colors in cube
+			scene.add( cube );
+
+
+
+			camera.position.z = 8;
+
+			var animate = function () {                        //function for rotating the cube
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.2;
+				cube.rotation.y += 0.3;
+
+				renderer.render(scene, camera);           //putting scene and camera in renderer
+			};
+
+			animate();                 //returning animate function
+
+
+
+                        var scene = new THREE.Scene();                                                                     
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 ); 
+                        var renderer = new THREE.WebGLRenderer();                              //displays the scene
+			renderer.setSize( window.innerWidth, window.innerHeight );             //make render half of the size
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.BoxGeometry( 3, 2, 3 );                      //drawing cube
+			var material = new THREE.MeshBasicMaterial( { color: 0x00ffff } );    //filling colors
+			var cube = new THREE.Mesh( geometry, material );                      //putting lines and colors in cube
+			scene.add( cube );
+
+
+
+			camera.position.z = 8;
+
+			var animate = function () {                        //function for rotating the cube
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.2;
+				cube.rotation.y += 0.3;
+
+				renderer.render(scene, camera);           //putting scene and camera in renderer
+			};
+
+			animate();                                        //returning animate function
+
+
+
+
+
+		</script>
+
+
+	</body>
+</html>

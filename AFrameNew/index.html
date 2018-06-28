@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>360° Image Browser</title>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@3.x.x/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.x.x/dist/aframe-event-set-component.min.js"></script>
+    <script src="set-image.js"></script>
+
+  </head>
+  <body>
+<a-scene>
+<a-assets>
+<img id="skytexture" src="images/land.png">
+    <img id="city" src="images/equi5.jpg"/>
+    <img id="city-thumb" src="women.html"/>
+    <img id="cubes" src="images/equi6.jpg"/>
+    <img id="cubes-thumb" src="images/equi4.jpg"/>
+    <img id="sechelt" src="images/equi7.jpg"/>
+    <img id="sechelt-thumb" src="images/equi2.jpg"/>
+<script id="link" type="text/html">
+                                                       
+<a-entity class="link" rotation="0 0 360" geometry="primitive: plane; width: 1.5; height: 1.5" material="shader:flat; src: ${thumb}" event-set__1="_event: mousedown; scale: 1 1 1" event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+      event-set__1="_event: mousedown; scale: 1 1 1" 
+      event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+      event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+      event-set__4="_event: mouseleave; scale: 1 1 1" set-image="on: click; target: #360; src: ${src}"  sound="on: click; src: #audio">
+      </a-entity>
+  </script>
+  </a-assets>
+
+<a-entity id="link" layout="type: line; margin: 2.5" position="-3 -1 -4">
+<a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
+<a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+<a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+</a-entity>
+
+  
+  <a-sky id="360" radius="10" src="#skytexture" radius="10"></a-sky>
+
+  <a-camera>
+        <a-cursor animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: yellow"
+          event-set__2="_event: mouseleave; color: black"
+          fuse="true"
+          ></a-cursor>
+      </a-camera>
+
+</a-scene>
+  </body>
+</html>
